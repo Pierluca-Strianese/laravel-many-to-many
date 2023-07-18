@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Tecnology;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -15,8 +16,12 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run()
     {
+        $tecnologies = Tecnology::all();
+
         foreach (config('projects') as $objProject) {
-            Project::create($objProject);
-        }
+            $project = Project::create($objProject);
+        };
+
+        $project->tecnologies()->attach(rand(1, 10));
     }
 }
