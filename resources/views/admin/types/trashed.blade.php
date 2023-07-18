@@ -26,7 +26,6 @@
                 <th scope="col">Author</th>
                 <th scope="col">Creation Date</th>
                 <th scope="col">Description</th>
-                <th scope="col">Languages</th>
             </tr>
         </thead>
         <tbody>
@@ -36,7 +35,6 @@
                     <td>{{ $project->author }}</td>
                     <td>{{ $project->creation_date }}</td>
                     <td>{{ $project->description }}</td>
-                    <td>{{ $project->languages }}</td>
                     <td>
                         <a class="btn btn-primary"
                             href="{{ route('admin.project.show', ['project' => $project->id]) }}">View</a>

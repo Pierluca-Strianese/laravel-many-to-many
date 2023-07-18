@@ -102,18 +102,6 @@
                 </div>
             </div>
 
-
-            <div class="mb-3">
-                <label for="languages" class="form-label">Languages</label>
-                <input type="text" class="form-control @error('languages') is-invalid @enderror" id="languages"
-                    rows="10" name="languages" value="{{ old('languages') }}">
-                <div class="invalid-feedback">
-                    @error('languages')
-                        {{ $message }}
-                    @enderror
-                </div>
-            </div>
-
             <div class="mb-3">
                 <label for="link_github" class="form-label">Link Github</label>
                 <input type="textarea" class="form-control @error('description') is-invalid @enderror" id="description"

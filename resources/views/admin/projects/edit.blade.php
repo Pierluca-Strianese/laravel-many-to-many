@@ -3,6 +3,7 @@
 @section('contents')
     <h1 class="text-primary border-bottom border-primary p-2">Edit Project</h1>
     <section class="container-sm bg-body-secondary p-4 my-4 rounded col-8">
+
         <form method="POST" action="{{ route('admin.project.update', ['project' => $project]) }}" novalidate>
             @csrf
             @method('put')
@@ -25,7 +26,7 @@
                 @foreach ($tecnologies as $tecnology)
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="tag-{{ $tecnology->id }}" name="tecnologies[]"
-                            value="{{ $tecnology->id }}" @if (in_array($tecnology->id, old(('tecnologies, $project->tecnologies')->pluck('id')->all()))) checked @endif>
+                            value="{{ $tecnology->id }}" @if (in_array($tecnology->id, old('tecnologies', $project->tecnologies->pluck('id')->all()))) checked @endif>
                         <label class="form-check-label" for="tag-{{ $tecnology->id }}">{{ $tecnology->name }}</label>
                     </div>
                 @endforeach
@@ -96,7 +97,7 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="10"
-                    name="description" value="{{ old('description', $project->description) }}"></textarea>
+                    name="description"> {{ old('description', $project->description) }}</textarea>
                 <div class="invalid-feedback">
                     @error('description')
                         {{ $message }}
@@ -104,22 +105,10 @@
                 </div>
             </div>
 
-
-            <div class="mb-3">
-                <label for="languages" class="form-label">Languages</label>
-                <input type="text" class="form-control @error('languages') is-invalid @enderror" id="languages"
-                    rows="3" name="languages" value="{{ old('languages', $project->languages) }}">
-                <div class="invalid-feedback">
-                    @error('languages')
-                        {{ $message }}
-                    @enderror
-                </div>
-            </div>
-
             <div class="mb-3">
                 <label for="link_github" class="form-label">Link Github</label>
-                <input type="textarea" class="form-control @error('description') is-invalid @enderror" id="description"
-                    name="description" value="{{ old('description', $project->link_github) }}">
+                <input type="url" class="form-control @error('link_github') is-invalid @enderror" id="link_github"
+                    name="link_github" value="{{ old('link_github', $project->link_github) }}">
                 <div class="invalid-feedback">
                     @error('link_github')
                         {{ $message }}

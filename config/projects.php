@@ -9,7 +9,6 @@ return [
         "last_update"      => "2023-03-24",
         "collaborators"    => "",
         "description"      => "A clone of Spotify Web",
-        "languages"        => "HTML, CSS",
         "link_github"      => "https://github.com/Pierluca-Strianese/html-css-spotifyweb",
     ],
     [
@@ -20,7 +19,6 @@ return [
         "last_update"      => "2023-04-28",
         "collaborators"    => "",
         "description"      => "A clone of Minefield ",
-        "languages"        => "HTML, CSS, JS ",
         "link_github"      => "https://github.com/Pierluca-Strianese/js-campominato-dom",
     ],
     [
@@ -31,7 +29,6 @@ return [
         "last_update"      => "2023-05-10",
         "collaborators"    => "",
         "description"      => "A clone of Facebook",
-        "languages"        => "HTML, CSS, JS",
         "link_github"      => "https://github.com/Pierluca-Strianese/js-social-posts",
     ],
     [
@@ -42,7 +39,6 @@ return [
         "last_update"      => "2023-05-15",
         "collaborators"    => "",
         "description"      => "A clone of WhatsApp",
-        "languages"        => "HTML, CSS, JS",
         "link_github"      => "https://github.com/Pierluca-Strianese/vue-boolzapp",
     ],
     [
@@ -53,7 +49,6 @@ return [
         "last_update"      => "2023-06-1",
         "collaborators"    => "",
         "description"      => "A clone of Nelflix",
-        "languages"        => "HTML, JS, VUE",
         "link_github"      => "https://github.com/Pierluca-Strianese/vite-boolflix",
     ],
     [
@@ -64,7 +59,6 @@ return [
         "last_update"      => "2023-07-03",
         "collaborators"    => "",
         "description"      => "A clone of a Website of DC Comics",
-        "languages"        => "PHP, BLADE",
         "link_github"      => "https://github.com/Pierluca-Strianese/laravel-dc-comics",
     ],
 ];

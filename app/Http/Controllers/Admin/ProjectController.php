@@ -16,7 +16,6 @@ class ProjectController extends Controller
         'author'        => 'required|string|max:30',
         'creation_date' => 'required|date',
         'collaborators' => 'max:150',
-        'languages'     => 'max:50',
         'link_github'   => 'required|url|max:150',
     ];
 
@@ -55,7 +54,6 @@ class ProjectController extends Controller
         $newProject->last_update        = $data['last_update'];
         $newProject->collaborators      = $data['collaborators'];
         $newProject->description        = $data['description'];
-        $newProject->languages          = $data['languages'];
         $newProject->link_github        = $data['link_github'];
         $newProject->save();
 
@@ -76,30 +74,30 @@ class ProjectController extends Controller
     {
         $types          = Type::all();
         $tecnologies    = Tecnology::all();
-        return view('admin.projects.edit', compact('project','types', 'Tecnology'));
+        return view('admin.projects.edit', compact('project','types','tecnologies'));
     }
 
 
     public function update(Request $request, Project $project)
     {
         // validare i dati
-        $request->validate($this->validations, $this->validation_messages);
+        // $request->validate($this->validations, $this->validation_messages);
         $data = $request->all();
 
-        // Salvare i dati nel database
-        $newProject = new Project();
-        $newProject->title              = $data['title'];
-        $newProject->type_id            = $data['type_id'];
-        $newProject->author             = $data['author'];
-        $newProject->creation_date      = $data['creation_date'];
-        $newProject->last_update        = $data['last_update'];
-        $newProject->collaborators      = $data['collaborators'];
-        $newProject->description        = $data['description'];
-        $newProject->languages          = $data['languages'];
-        $newProject->link_github        = $data['link_github'];
-        $newProject->update();
+        // Aggiornare i dati nel database
+        $project->title              = $data['title'];
+        $project->type_id            = $data['type_id'];
+        $project->author             = $data['author'];
+        $project->creation_date      = $data['creation_date'];
+        $project->last_update        = $data['last_update'];
+        $project->collaborators      = $data['collaborators'];
+        $project->description        = $data['description'];
+        $project->link_github        = $data['link_github'];
+        $project->update();
 
-        return to_route('admin.project.show', ['project' => $newProject]);
+        $project->tecnologies()->sync($data['tecnologies'] ?? []);
+
+        return to_route('admin.project.show', ['project' => $project]);
     }
 
 
