@@ -19,13 +19,14 @@
             </div>
 
             <div class="mb-3">
-
                 <h3> Tecnologies </h3>
                 @foreach ($tecnologies as $tecnology)
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="tag-{{ $tecnology->id }}" name="tecnologies[]"
-                            value="{{ $tecnology->id }}" @if (in_array($tecnology->id, old('tecnologies, []'))) checked @endif>
-                        <label class="form-check-label" for="tag-{{ $tecnology->id }}">{{ $tecnology->name }}</label>
+                        <input type="checkbox" class="form-check-input" id="tecnology-{{ $tecnology->id }}"
+                            name="tecnologies[]" value="{{ $tecnology->id }}"
+                            @if (in_array($tecnology->id, old('tecnologies', []))) checked @endif>
+
+                        <label class="form-check-label" for="tecnology-{{ $tecnology->id }}">{{ $tecnology->name }}</label>
                     </div>
                 @endforeach
 
@@ -104,8 +105,8 @@
 
             <div class="mb-3">
                 <label for="link_github" class="form-label">Link Github</label>
-                <input type="textarea" class="form-control @error('description') is-invalid @enderror" id="description"
-                    name="description" value="{{ old('description') }}">
+                <input type="url" class="form-control @error('link_github') is-invalid @enderror" id="link_github"
+                    name="link_github" value="{{ old('link_github') }}">
                 <div class="invalid-feedback">
                     @error('link_github')
                         {{ $message }}

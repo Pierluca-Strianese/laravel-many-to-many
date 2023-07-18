@@ -42,7 +42,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         // validare i dati
-        $request->validate($this->validations, $this->validation_messages);
+        // $request->validate($this->validations, $this->validation_messages);
         $data = $request->all();
 
         // Salvare i dati nel database
