@@ -24,22 +24,14 @@ class ProjectController extends Controller
         'title.required'    => 'Il campo titolo è obbligatorio'
     ];
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $projects = Project::all();
         return view('admin.projects.index', compact('projects'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $types          = Type::all();
@@ -47,12 +39,7 @@ class ProjectController extends Controller
         return view('admin.projects.create', compact('types','tecnologies'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         // validare i dati
@@ -72,42 +59,27 @@ class ProjectController extends Controller
         $newProject->link_github        = $data['link_github'];
         $newProject->save();
 
-        $newProject->tecnologies()->sync($data['tecnologies']);
+        $newProject->tecnologies()->sync($data['tecnologies'] ?? []);
 
 
         return to_route('admin.project.show', ['project' => $newProject]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Project $project)
     {
         return view('admin.projects.show', compact('project'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Project $project)
     {
-        $types = Type::all();
-        return view('admin.projects.edit', compact('project','types'));
+        $types          = Type::all();
+        $tecnologies    = Tecnology::all();
+        return view('admin.projects.edit', compact('project','types', 'Tecnology'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Project $project)
     {
         // validare i dati
@@ -129,13 +101,6 @@ class ProjectController extends Controller
 
         return to_route('admin.project.show', ['project' => $newProject]);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
 
 
     public function destroy(Project $project)
