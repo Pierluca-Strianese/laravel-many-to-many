@@ -20,8 +20,10 @@ class ProjectsTableSeeder extends Seeder
 
         foreach (config('projects') as $objProject) {
             $project = Project::create($objProject);
+
+            $project->tecnologies()->sync([rand(1,5),rand(1,5),rand(1,5)]);
         };
 
-        $project->tecnologies()->attach(rand(1, 10));
+
     }
 }
