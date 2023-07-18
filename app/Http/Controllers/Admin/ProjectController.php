@@ -12,11 +12,13 @@ class ProjectController extends Controller
 {
     private $validations = [
         'title'         => 'required|string|min:4|max:50',
-        'type_id'       => 'required|exisist:types,id',
+        'type_id'       => 'required|integer|exisist:types,id',
         'author'        => 'required|string|max:30',
         'creation_date' => 'required|date',
         'collaborators' => 'max:150',
-        'link_github'   => 'required|url|max:150',
+        'link_github'   => 'url|max:150',
+        'tecnologies'   => 'nullable|array',
+        'tecnologies.*' => 'integer|exisist:tecnologies,id',
     ];
 
     private $validation_messages = [
