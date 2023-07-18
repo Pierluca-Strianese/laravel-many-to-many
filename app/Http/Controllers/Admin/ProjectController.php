@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Type;
 use App\Models\Project;
+use App\Models\Tecnology;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -41,8 +42,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $types          = Type::all();
+        $tecnologies    = Tecnology::all();
+        return view('admin.projects.create', compact('types','tecnologies'));
     }
 
     /**
@@ -69,6 +71,9 @@ class ProjectController extends Controller
         $newProject->languages          = $data['languages'];
         $newProject->link_github        = $data['link_github'];
         $newProject->save();
+
+        $newProject->tecnologies()->sync($data['tecnologies']);
+
 
         return to_route('admin.project.show', ['project' => $newProject]);
     }

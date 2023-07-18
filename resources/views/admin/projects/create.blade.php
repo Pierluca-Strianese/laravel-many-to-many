@@ -19,6 +19,19 @@
             </div>
 
             <div class="mb-3">
+
+                <h3> Tecnologies </h3>
+                @foreach ($tecnologies as $tecnology)
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="tag-{{ $tecnology->id }}" name="tecnologies[]"
+                            value="{{ $tecnology->id }}" @if (in_array($tecnology->id, old('tecnologies, []'))) checked @endif>
+                        <label class="form-check-label" for="tag-{{ $tecnology->id }}">{{ $tecnology->name }}</label>
+                    </div>
+                @endforeach
+
+            </div>
+
+            <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
                 <select class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example"
                     id="type" name="type_id">
