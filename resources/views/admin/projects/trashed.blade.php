@@ -37,14 +37,14 @@
                     <td>{{ $project->description }}</td>
                     <td>
                         <a class="btn btn-primary"
-                            href="{{ route('admin.project.show', ['project' => $project->id]) }}">View</a>
+                            href="{{ route('admin.project.show', ['project' => $project]) }}">View</a>
                         <form class="d-inline-block" method="POST"
-                            action="{{ route('admin.project.restore', ['project' => $project->id]) }}">
+                            action="{{ route('admin.project.restore', ['project' => $project]) }}">
                             @csrf
                             <button class="btn btn-warning">Restore</button>
                         </form>
                         <button type="button" class="btn btn-danger js-delete" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal" data-id="{{ $project->id }}">
+                            data-bs-target="#deleteModal" data-id="{{ $project }}">
                             Delete
                         </button>
                     </td>
