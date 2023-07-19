@@ -50,6 +50,7 @@ class ProjectController extends Controller
         // Salvare i dati nel database
         $newProject = new Project();
         $newProject->title              = $data['title'];
+        $newProject->slug               = Project::slugger($data['title']);
         $newProject->type_id            = $data['type_id'];
         $newProject->author             = $data['author'];
         $newProject->creation_date      = $data['creation_date'];
@@ -66,8 +67,9 @@ class ProjectController extends Controller
     }
 
 
-    public function show(Project $project)
+    public function show($slug)
     {
+        $project = Project::where('slug', $slug)->firstOrFail();
         return view('admin.projects.show', compact('project'));
     }
 

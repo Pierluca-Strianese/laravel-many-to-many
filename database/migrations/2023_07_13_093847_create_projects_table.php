@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('title', 50);
+            $table->string('slug', 80)->unique();
             $table->string('author', 30);
             $table->date('creation_date');
             $table->date('last_update');

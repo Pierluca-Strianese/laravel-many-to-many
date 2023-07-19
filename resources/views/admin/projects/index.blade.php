@@ -45,11 +45,11 @@
                     <td class="text-center"> <a href="{{ $project->link_github }}"> LINK </a></td>
                     <td class="text-center">
                         <a class="btn btn-primary m-1"
-                            href="{{ route('admin.project.show', ['project' => $project->id]) }}">View</a>
+                            href="{{ route('admin.project.show', ['project' => $project]) }}">View</a>
                         <a class="btn btn-warning m-1"
-                            href="{{ route('admin.project.edit', ['project' => $project->id]) }}">Edit</a>
+                            href="{{ route('admin.project.edit', ['project' => $project]) }}">Edit</a>
                         <form class="d-inline-block" method="POST"
-                            action="{{ route('admin.project.destroy', ['project' => $project->id]) }}">
+                            action="{{ route('admin.project.destroy', ['project' => $project]) }}">
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger">Delete</button>

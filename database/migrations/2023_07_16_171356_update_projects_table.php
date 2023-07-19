@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             // creare la colonna della chiave esterna
-            $table->unsignedBigInteger('type_id')->after('id')->default('1');
+            $table->unsignedBigInteger('type_id')->after('id')->default('1'); //aggiungere ->nullable()
 
             // definire la colonna come chiave esterna
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->foreign('type_id')->references('id')->on('types'); //aggiungere ->nullOnDelete()
         });
     }
 
