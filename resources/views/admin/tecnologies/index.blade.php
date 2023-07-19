@@ -1,7 +1,7 @@
 @extends('admin.layouts.base')
 
 @section('contents')
-    <section class="container-sm bg-body-secondary p-4 my-4 rounded col-4">
+    <section class="container-sm p-4 my-4 rounded col-4">
 
         @if (session('delete_success'))
             @php $tecnology = session('delete_success') @endphp

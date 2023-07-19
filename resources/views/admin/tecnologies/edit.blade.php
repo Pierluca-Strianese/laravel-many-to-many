@@ -1,7 +1,7 @@
 @extends('Admin.layouts.base')
 
 @section('contents')
-    <section class="container-sm bg-body-secondary p-4 my-4 rounded col-6">
+    <section class="container-sm bg-body-secondary p-4 my-3 rounded col-6">
 
         <h1 class="p-3">Edit Tecnology</h1>
         <form method="POST" action="{{ route('admin.tecnologies.update', ['tecnology' => $tecnology]) }}">

@@ -16,12 +16,21 @@ class TecnologyController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.tecnologies.create');
     }
 
     public function store(Request $request)
     {
-        //
+        // $request->validate($this->validations);
+        $data = $request->all();
+
+        // Salvare i dati nel database
+        $newtecnology = new tecnology();
+        $newtecnology->name          = $data['name'];
+        $newtecnology->slug          = Tecnology::slugger($data['name']);
+        $newtecnology->save();
+
+        return redirect()->route('admin.tecnologies.index', ['tecnology' => $newtecnology]);
     }
 
     public function show($slug)
@@ -38,6 +47,14 @@ class TecnologyController extends Controller
     public function update(Request $request, $slug)
     {
         $tecnology = Tecnology::where('slug', $slug)->firstOrFail();
+        // $request->validate($this->validations);
+        $data = $request->all();
+
+        // Salvare i dati nel database
+        $tecnology->name = $data['name'];
+        $tecnology->update();
+
+        return redirect()->route('admin.tecnologies.index', ['tecnology' => $tecnology]);
     }
 
     public function destroy($slug)

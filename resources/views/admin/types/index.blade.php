@@ -1,7 +1,7 @@
 @extends('admin.layouts.base')
 
 @section('contents')
-    <section>
+    <section class="container-sm p-4 my-3 rounded col-8">
 
         @if (session('delete_success'))
             @php $type = session('delete_success') @endphp
@@ -27,7 +27,8 @@
                         <td>{{ count($type->projects) }}</td>
                         <td>
                             <a class="btn btn-primary m-1" href="{{ route('admin.types.show', ['type' => $type]) }}">View</a>
-                            <a class="btn btn-warning m-1" href="{{ route('admin.types.edit', ['type' => $type]) }}">Edit</a>
+                            <a class="btn btn-warning m-1"
+                                href="{{ route('admin.types.edit', ['type' => $type]) }}">Edit</a>
                             <form class="d-inline-block" method="POST"
                                 action="{{ route('admin.types.destroy', ['type' => $type]) }}">
                                 @csrf
