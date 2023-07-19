@@ -15,7 +15,8 @@ class TecnologyController extends Controller
      */
     public function index()
     {
-        //
+        $tecnologies = Tecnology::all();
+        return view ('admin.tecnologies.index', compact('tecnologies'));
     }
 
     /**
@@ -81,6 +82,11 @@ class TecnologyController extends Controller
      */
     public function destroy(Tecnology $tecnology)
     {
-        //
+
+        $tecnology->projects()->detach();
+        $tecnology->delete();
+
+
+        return to_route('admin.tecnologies.index')->with('delete_success', $tecnology);
     }
 }

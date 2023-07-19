@@ -2,7 +2,7 @@
 
 return [
     [
-        // "type_id"      => rand(1, 3),
+        "type_id"          => rand(2, 4),
         "title"            => "Spotify Web",
         "author"           => "Pierluca Strianese",
         "creation_date"    => "2023-03-23",
@@ -12,7 +12,7 @@ return [
         "link_github"      => "https://github.com/Pierluca-Strianese/html-css-spotifyweb",
     ],
     [
-        // "type_id"      => rand(1, 3),
+        "type_id"          => rand(2, 4),
         "title"            => "Campominato",
         "author"           => "Pierluca Strianese",
         "creation_date"    => "2023-04-26",
@@ -22,7 +22,7 @@ return [
         "link_github"      => "https://github.com/Pierluca-Strianese/js-campominato-dom",
     ],
     [
-        "type_id"      => rand(1, 3),
+        "type_id"          => rand(2, 4),
         "title"            => "Social Post",
         "author"           => "Pierluca Strianese",
         "creation_date"    => "2023-05-10",
@@ -32,7 +32,7 @@ return [
         "link_github"      => "https://github.com/Pierluca-Strianese/js-social-posts",
     ],
     [
-        // "type_id"      => rand(1, 3),
+        "type_id"          => rand(2, 4),
         "title"            => "BoolzApp",
         "author"           => "Pierluca Strianese",
         "creation_date"    => "2023-05-10",
@@ -42,7 +42,7 @@ return [
         "link_github"      => "https://github.com/Pierluca-Strianese/vue-boolzapp",
     ],
     [
-        // "type_id"      => rand(1, 3),
+        "type_id"          => rand(2, 4),
         "title"            => "BoolFlix",
         "author"           => "Pierluca Strianese",
         "creation_date"    => "2023-05-25",
@@ -52,7 +52,7 @@ return [
         "link_github"      => "https://github.com/Pierluca-Strianese/vite-boolflix",
     ],
     [
-        // "type_id"      => rand(1, 3),
+        "type_id"          => rand(2, 4),
         "title"            => "DC Comics",
         "author"           => "Pierluca Strianese",
         "creation_date"    => "2023-06-29",

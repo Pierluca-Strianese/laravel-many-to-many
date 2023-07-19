@@ -13,10 +13,10 @@
 
         <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <li class="nav-item ps-2">
                     <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown ps-2">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Projects
@@ -30,7 +30,8 @@
                         <li><a class="dropdown-item" href="{{ route('admin.project.trashed') }}">Trash</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
+
+                <li class="nav-item dropdown ps-2">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Type
@@ -38,6 +39,18 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('admin.types.index') }}">Index</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.types.create') }}">New type</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown ps-2">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Tecnologies
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('admin.tecnologies.index') }}">Index</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.tecnologies.create') }}">New Tecnology</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

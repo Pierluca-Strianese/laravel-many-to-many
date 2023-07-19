@@ -4,9 +4,9 @@
     <section>
 
         @if (session('delete_success'))
-            @php $type = session('delete_success') @endphp
+            @php $tecnology = session('delete_success') @endphp
             <div class="alert alert-danger">
-                The type "{{ $type->name }}" has been deleted
+                The tecnology "{{ $tecnology->name }}" has been deleted
             </div>
         @endif
 
@@ -15,23 +15,21 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Project Count</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($types as $type)
+                @foreach ($tecnologies as $tecnology)
                     <tr>
-                        <th scope="row">{{ $type->id }}</th>
-                        <td>{{ $type->name }}</td>
-                        <td>{{ count($type->projects) }}</td>
+                        <th scope="row">{{ $tecnology->id }}</th>
+                        <td>{{ $tecnology->name }}</td>
                         <td>
                             <a class="btn btn-primary m-1"
-                                href="{{ route('admin.types.show', ['type' => $type->id]) }}">View</a>
+                                href="{{ route('admin.tecnologies.show', ['tecnology' => $tecnology->id]) }}">View</a>
                             <a class="btn btn-warning m-1"
-                                href="{{ route('admin.types.edit', ['type' => $type->id]) }}">Edit</a>
+                                href="{{ route('admin.tecnologies.edit', ['tecnology' => $tecnology->id]) }}">Edit</a>
                             <form class="d-inline-block" method="POST"
-                                action="{{ route('admin.types.destroy', ['type' => $type->id]) }}">
+                                action="{{ route('admin.tecnologies.destroy', ['tecnology' => $tecnology->id]) }}">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger">Delete</button>
