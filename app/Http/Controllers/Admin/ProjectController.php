@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Tecnology;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -14,6 +15,7 @@ class ProjectController extends Controller
         'title'         => 'required|string|min:4|max:50',
         'type_id'       => 'required|integer|exisist:types,id',
         'author'        => 'required|string|max:30',
+        'image'         => 'image',
         'creation_date' => 'required|date',
         'collaborators' => 'max:150',
         'link_github'   => 'url|max:150',
@@ -43,9 +45,13 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
+
+
         // validare i dati
         // $request->validate($this->validations, $this->validation_messages);
         $data = $request->all();
+
+        $imagePath = Storage::put('uploads', $data['image']);
 
         // Salvare i dati nel database
         $newProject = new Project();
@@ -57,6 +63,7 @@ class ProjectController extends Controller
         $newProject->last_update        = $data['last_update'];
         $newProject->collaborators      = $data['collaborators'];
         $newProject->description        = $data['description'];
+        $newProject->image              = $imagePath;
         $newProject->link_github        = $data['link_github'];
         $newProject->save();
 
