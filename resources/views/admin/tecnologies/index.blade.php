@@ -1,7 +1,7 @@
 @extends('admin.layouts.base')
 
 @section('contents')
-    <section>
+    <section class="container-sm bg-body-secondary p-4 my-4 rounded col-4">
 
         @if (session('delete_success'))
             @php $tecnology = session('delete_success') @endphp
@@ -24,8 +24,6 @@
                         <th scope="row">{{ $tecnology->id }}</th>
                         <td>{{ $tecnology->name }}</td>
                         <td>
-                            <a class="btn btn-primary m-1"
-                                href="{{ route('admin.tecnologies.show', ['tecnology' => $tecnology]) }}">View</a>
                             <a class="btn btn-warning m-1"
                                 href="{{ route('admin.tecnologies.edit', ['tecnology' => $tecnology]) }}">Edit</a>
                             <form class="d-inline-block" method="POST"
