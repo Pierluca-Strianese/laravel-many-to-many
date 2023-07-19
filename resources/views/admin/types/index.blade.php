@@ -26,12 +26,10 @@
                         <td>{{ $type->name }}</td>
                         <td>{{ count($type->projects) }}</td>
                         <td>
-                            <a class="btn btn-primary m-1"
-                                href="{{ route('admin.types.show', ['type' => $type->id]) }}">View</a>
-                            <a class="btn btn-warning m-1"
-                                href="{{ route('admin.types.edit', ['type' => $type->id]) }}">Edit</a>
+                            <a class="btn btn-primary m-1" href="{{ route('admin.types.show', ['type' => $type]) }}">View</a>
+                            <a class="btn btn-warning m-1" href="{{ route('admin.types.edit', ['type' => $type]) }}">Edit</a>
                             <form class="d-inline-block" method="POST"
-                                action="{{ route('admin.types.destroy', ['type' => $type->id]) }}">
+                                action="{{ route('admin.types.destroy', ['type' => $type]) }}">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger">Delete</button>

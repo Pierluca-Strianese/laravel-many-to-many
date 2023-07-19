@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Type;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -46,8 +47,9 @@ class TypeController extends Controller
 
         // Salvare i dati nel database
         $newType = new Type();
-        $newType->name = $data['name'];
-        $newType->description = $data['description'];
+        $newType->name          = $data['name'];
+        $newType->slug          = Type::slugger($data['name']);
+        $newType->description   = $data['description'];
         $newType->save();
 
         return redirect()->route('admin.types.show', ['type' => $newType]);
@@ -59,8 +61,9 @@ class TypeController extends Controller
      * @param  \App\Models\type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show(type $type)
+    public function show($slug)
     {
+        $type = Type::where('slug', $slug)->firstOrFail();
         return view ('admin.types.show', compact('type'));
     }
 
@@ -70,8 +73,9 @@ class TypeController extends Controller
      * @param  \App\Models\type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(type $type)
+    public function edit($slug)
     {
+         $type = Type::where('slug', $slug)->firstOrFail();
         return view('admin.types.edit', compact('type'));
     }
 
@@ -82,8 +86,9 @@ class TypeController extends Controller
      * @param  \App\Models\type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, type $type)
+    public function update(Request $request, $slug)
     {
+        $type = Type::where('slug', $slug)->firstOrFail();
         $request->validate($this->validations);
         $data = $request->all();
 
@@ -101,15 +106,17 @@ class TypeController extends Controller
      * @param  \App\Models\type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(type $type)
+    public function destroy($slug)
     {
-        foreach($type->projects as $project) {
-            $post->type_id = 1;
+
+        $type = Type::where('slug', $slug)->firstOrFail();
+
+        foreach ($type->projects as $type) {
+            $project->category_id = 1;
             $project->update();
         }
 
         $type->delete();
-
 
         return to_route('admin.types.index')->with('delete_success', $type);
     }

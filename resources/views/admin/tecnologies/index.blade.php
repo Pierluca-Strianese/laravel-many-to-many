@@ -25,11 +25,11 @@
                         <td>{{ $tecnology->name }}</td>
                         <td>
                             <a class="btn btn-primary m-1"
-                                href="{{ route('admin.tecnologies.show', ['tecnology' => $tecnology->id]) }}">View</a>
+                                href="{{ route('admin.tecnologies.show', ['tecnology' => $tecnology]) }}">View</a>
                             <a class="btn btn-warning m-1"
-                                href="{{ route('admin.tecnologies.edit', ['tecnology' => $tecnology->id]) }}">Edit</a>
+                                href="{{ route('admin.tecnologies.edit', ['tecnology' => $tecnology]) }}">Edit</a>
                             <form class="d-inline-block" method="POST"
-                                action="{{ route('admin.tecnologies.destroy', ['tecnology' => $tecnology->id]) }}">
+                                action="{{ route('admin.tecnologies.destroy', ['tecnology' => $tecnology]) }}">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger">Delete</button>

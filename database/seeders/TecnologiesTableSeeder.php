@@ -36,8 +36,18 @@ class TecnologiesTableSeeder extends Seeder
             ],
         ];
 
-        foreach ($tecnologies as $tecnology) {
-            Tecnology::create($tecnology);
-        }
+
+        // foreach ($tecnologies as $tecnology) {
+        //     Tecnology::create($tecnology);
+        // }
+
+        foreach ($tecnologies as $objTecnology) {
+
+            $slug = Tecnology::slugger($objTecnology['name']);
+            $project = Tecnology::create([
+                'name'          => $objTecnology['name'],
+                'slug'          => $slug,
+            ]);
+        };
     }
 }

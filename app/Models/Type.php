@@ -12,6 +12,10 @@ class Type extends Model
     use Slugger;
     public $timestamps = false;
 
+    public function getRouteKey() {
+        return $this->slug;
+    }
+
     public function projects() {
         return $this->hasMany(Project::class);
     }

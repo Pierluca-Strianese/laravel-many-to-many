@@ -14,6 +14,10 @@ class Tecnology extends Model
     use Slugger;
     public $timestamps = false;
 
+    public function getRouteKey() {
+        return $this->slug;
+    }
+
     public function projects() {
         return $this->belongsToMany(Project::class);
     }

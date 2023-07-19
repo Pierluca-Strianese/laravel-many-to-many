@@ -15,8 +15,15 @@ class TypesTableseeder extends Seeder
      */
     public function run()
     {
+
         foreach (config('types') as $objType) {
-            Type::create($objType);
-        }
+
+            $slug = Type::slugger($objType['name']);
+            $project = Type::create([
+                'name'          => $objType['name'],
+                'slug'          => $slug,
+                'description'   => $objType['description'],
+            ]);
+        };
     }
 }

@@ -46,9 +46,9 @@ class TecnologyController extends Controller
      * @param  \App\Models\Tecnology  $tecnology
      * @return \Illuminate\Http\Response
      */
-    public function show(Tecnology $tecnology)
+    public function show($slug)
     {
-        //
+        $tecnology = Tecnology::where('slug', $slug)->firstOrFail();
     }
 
     /**
@@ -57,9 +57,9 @@ class TecnologyController extends Controller
      * @param  \App\Models\Tecnology  $tecnology
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tecnology $tecnology)
+    public function edit($slug)
     {
-        //
+        $tecnology = Tecnology::where('slug', $slug)->firstOrFail();
     }
 
     /**
@@ -69,9 +69,9 @@ class TecnologyController extends Controller
      * @param  \App\Models\Tecnology  $tecnology
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tecnology $tecnology)
+    public function update(Request $request, $slug)
     {
-        //
+        $tecnology = Tecnology::where('slug', $slug)->firstOrFail();
     }
 
     /**
@@ -80,8 +80,9 @@ class TecnologyController extends Controller
      * @param  \App\Models\Tecnology  $tecnology
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tecnology $tecnology)
+    public function destroy($slug)
     {
+        $tecnology = Tecnology::where('slug', $slug)->firstOrFail();
 
         $tecnology->projects()->detach();
         $tecnology->delete();
