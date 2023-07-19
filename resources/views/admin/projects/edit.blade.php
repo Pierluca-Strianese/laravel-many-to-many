@@ -4,7 +4,8 @@
     <h1 class="text-primary border-bottom border-primary p-2">Edit Project</h1>
     <section class="container-sm bg-body-secondary p-4 my-4 rounded col-8">
 
-        <form method="POST" action="{{ route('admin.project.update', ['project' => $project]) }}" novalidate>
+        <form method="POST" action="{{ route('admin.project.update', ['project' => $project]) }}"
+            enctype="multipart/form-data" novalidate>
             @csrf
             @method('put')
 
@@ -100,6 +101,16 @@
                     name="description"> {{ old('description', $project->description) }}</textarea>
                 <div class="invalid-feedback">
                     @error('description')
+                        {{ $message }}
+                    @enderror
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                <label class="input-group-text @error('image') is-invalid @enderror" for="image">Upload</label>
+                <div class="invalid-feedback">
+                    @error('image')
                         {{ $message }}
                     @enderror
                 </div>

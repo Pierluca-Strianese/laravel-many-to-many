@@ -15,7 +15,7 @@ class ProjectController extends Controller
         'title'         => 'required|string|min:4|max:50',
         'type_id'       => 'required|integer|exisist:types,id',
         'author'        => 'required|string|max:30',
-        'image'         => 'image',
+        'image'         => 'nullable|image',
         'creation_date' => 'required|date',
         'collaborators' => 'max:150',
         'link_github'   => 'url|max:150',
@@ -97,6 +97,18 @@ class ProjectController extends Controller
         // $request->validate($this->validations, $this->validation_messages);
         $data = $request->all();
 
+        if ($data['image']) {
+
+            $imagePath = Storage::put('uploads', $data['image']);
+
+            if($project->image) {
+                Storage::delete($project->image);
+            }
+
+            $project->image = $imagePath;
+        }
+
+
         // Aggiornare i dati nel database
         $project->title              = $data['title'];
         $project->type_id            = $data['type_id'];
@@ -142,6 +154,11 @@ class ProjectController extends Controller
     public function harddelete($slug)
     {
         $project = Project::withTrashed()->find($slug);
+
+        if($project->image) {
+            Storage::delete($project->image);
+        }
+
         $project->tecnologies()->detach();
         $project->forceDelete();
 
