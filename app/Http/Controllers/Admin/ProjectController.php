@@ -97,7 +97,7 @@ class ProjectController extends Controller
         // $request->validate($this->validations, $this->validation_messages);
         $data = $request->all();
 
-        if ($data['image']) {
+        if ($project->image) {
 
             $imagePath = Storage::put('uploads', $data['image']);
 
