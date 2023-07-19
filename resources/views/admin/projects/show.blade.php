@@ -2,9 +2,15 @@
 
 @section('contents')
     <section>
-
-        <h1 class="text-primary pb-4 ps-3"> {{ $project->title }} </h1>
-        <span> Tags: {{ implode(' , ', $project->tecnologies->pluck('name')->all()) }}</span>
+        <section class="pb-4 ps-3">
+            <h1 class="text-primary"> {{ $project->title }} </h1>
+            @foreach ($project->tecnologies as $tecnology)
+                <button type="button" class="btn btn-outline-success btn-sm"><a
+                        class="text-decoration-none link-success link-offset-2"
+                        href="{{ route('admin.tecnologies.show', ['tecnology' => $tecnology]) }}">
+                        {{ $tecnology->name }}</a></button>
+            @endforeach
+        </section>
         <section class="ps-3 border-top border-bottom border-primary col-4">
 
             <h2 class="fs-4 pt-3"> Type: <button type="button" class="btn btn-light"><a class="text-decoration-none"

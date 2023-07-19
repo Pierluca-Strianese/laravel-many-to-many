@@ -31,7 +31,14 @@
                     <td><button type="button" class="btn btn-light"><a class="text-decoration-none"
                                 href="{{ route('admin.types.show', ['type' => $project->type]) }}">{{ $project->type->name }}</a></button>
                     </td>
-                    <td>{{ implode(' , ', $project->tecnologies->pluck('name')->all()) }}</td>
+                    <td>
+                        @foreach ($project->tecnologies as $tecnology)
+                            <button type="button" class="btn btn-outline-success btn-sm"><a
+                                    class="text-decoration-none link-success link-offset-2"
+                                    href="{{ route('admin.tecnologies.show', ['tecnology' => $tecnology]) }}">
+                                    {{ $tecnology->name }}</a></button>
+                        @endforeach
+                    </td>
                     <td>{{ $project->author }}</td>
                     <td class="font-monospace">{{ $project->last_update }}</td>
                     <td>{{ $project->description }}</td>

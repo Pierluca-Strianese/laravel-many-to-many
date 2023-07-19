@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TecnologyController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Guests\PageController as GuestsPageController;
 
@@ -33,6 +34,7 @@ Route::middleware('auth', 'verified')
 
         Route::resource('project', ProjectController::class);
         Route::resource('types', TypeController::class);
+        Route::resource('tecnologies', TecnologyController::class);
     });
 
 

@@ -33,5 +33,8 @@
                 </a>
             </div>
         </form>
+        <span class="pt-5 text-center">Do you need an account?</span>
+        <button type="button" class="mt-2 col-md-auto btn btn-outline-secondary">
+            <a class="text-decoration-none link-secondary link-offset-2 ">Create New Account</a></button>
     </section>
 @endsection
